@@ -1,0 +1,132 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Created June 11, 2019 %%%%%%%%%%%%%%%%%
+%%%% Elliot Parrish        %%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mode<presentation>
+\usetheme[progressbar=frametitle, subsectionpage=progressbar]{metropolis}
+
+\makeatletter
+\setlength{\metropolis@titleseparator@linewidth}{1.1pt}
+\setlength{\metropolis@progressonsectionpage@linewidth}{1.1pt}
+\setlength{\metropolis@progressinheadfoot@linewidth}{1.1pt}
+\makeatother
+
+\usepackage[absolute,overlay]{textpos}
+\usepackage{booktabs}
+
+\ProvidesPackage{beamerthemeATLAS}
+
+% color definitions
+\definecolor{ATLASblue}{RGB}{11,128,195}
+\definecolor{ATLASblack}{RGB}{0,0,0}
+\definecolor{ATLASgray}{RGB}{165,167,168}
+\definecolor{ATLASwhite}{RGB}{255,255,255}
+
+% set the title color
+\setbeamercolor{title}{fg=ATLASblue}
+\setbeamercolor{subtitle}{fg=ATLASblue}
+
+% set the frame title color
+\setbeamercolor{frametitle}{fg=ATLASwhite,bg=ATLASblue}
+\setbeamercolor{framesubtitle}{fg=mDarkTeal}
+
+% set the progress bar color
+\setbeamercolor{progress bar}{fg=ATLASblack, bg=ATLASblue}
+
+%set the block, itemize colors
+\setbeamercolor{block}{fg=ATLASblue}
+\setbeamercolor{block item}{fg=ATLASblue}
+\setbeamercolor{itemize item}{fg=ATLASblue}
+\setbeamercolor{block title}{fg=ATLASwhite,bg=ATLASblue}
+\setbeamercolor{block body}{bg=ATLASgray!15!white}
+\setbeamercolor{block title example}{fg=ATLASwhite, bg=ATLASblue}
+\setbeamercolor{block body example}{bg=ATLASgray!15!white}
+\setbeamercolor{block title alerted}{fg=ATLASwhite, bg=mLightGreen}
+\setbeamercolor{block body alerted}{bg=ATLASgray!15!white}
+\setbeamercolor{structure}{fg=ATLASblue}
+
+% Slide background color
+% \setbeamercolor{background canvas}{bg=ATLASwhite}
+
+% footer colors
+\setbeamercolor{section in footer}{fg=ATLASwhite,bg=mDarkTeal!65!ATLASblack}
+\setbeamercolor{subsection in footer}{fg=ATLASwhite,bg=mDarkTeal}
+\setbeamercolor{pagenumber in footer}{fg=ATLASwhite,bg=mDarkTeal!65!ATLASblack}
+
+\setbeamercolor{shadow}{fg=black}
+
+%changing footer line
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.34\paperwidth,ht=2.25ex,dp=1ex,center]{section in footer}%
+    \insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.32\paperwidth,ht=2.25ex,dp=1ex,center]{subsection in footer}%
+    \insertsectionhead
+      \insertsubsectionhead
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.34\paperwidth,ht=2.25ex,dp=1ex,center]{pagenumber in footer}%
+   \insertshortauthor \ (\insertshortinstitute) \quad \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+% changing title graphic position
+\setbeamertemplate{title page}
+{
+   \vskip 0.1em
+  {\centering \usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\par}
+  \vbox{}
+  \vfill
+  \begingroup
+    \centering
+    \begin{beamercolorbox}[sep=3pt,center]{title}
+      \usebeamerfont{title}\inserttitle\par%
+      \ifx\insertsubtitle\@empty%
+      \else%
+        \vskip0.25em%
+        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+      \fi%     
+    \end{beamercolorbox}%
+    \vskip1em\par
+    \begin{beamercolorbox}[sep=3pt,center,]{author}
+      \usebeamerfont{author} \insertauthor
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=3pt,center]{institute}
+      \usebeamerfont{institute}\insertinstitute
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=3pt,center]{date}
+      \usebeamerfont{date}\insertdate
+    \end{beamercolorbox}\vskip0.5em
+  \endgroup
+  \vfill
+}
+
+% change logo position
+
+% first remove default 
+\setbeamertemplate{sidebar right}
+{
+    \vfill%
+    \llap{\usebeamertemplate***{navigation symbols}\hskip0.1cm}%
+    \vskip2pt
+}
+% Now adding to frametitle
+\addtobeamertemplate{frametitle}
+{
+   \begin{textblock*}{10cm}(1\textwidth,0cm)
+   \insertlogo
+   \end{textblock*}
+}
+{% adding subtitle, officially not supported by metropolis theme
+  \ifx\insertframesubtitle\@empty\else%
+  \usebeamerfont{framesubtitle}%
+  \usebeamercolor[fg]{framesubtitle}%
+  \insertframesubtitle%
+  \fi%
+}
+\mode
+<all>
